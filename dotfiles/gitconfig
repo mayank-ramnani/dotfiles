@@ -1,0 +1,16 @@
+[user]
+	name = mayank-ramnani
+	email = mayankr99@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	short = status -s --untracked-files=no
+    ds = diff --staged 
+    co2 = "!fn(){ git checkout `git branch | fzf`; };fn"
+	dog = log --all --decorate --oneline --graph
+    cpick = cherry-pick
+    cd = "!fn(){ cd `git rev-parse --show-toplevel`; };fn"
+[core]
+	autocrlf = false
