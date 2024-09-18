@@ -1,2 +1,2 @@
-require("mayank-nvim")
+require("nvim-mayank")
 
