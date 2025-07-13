@@ -25,7 +25,7 @@ set nowrap
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set autoindent
+"set autoindent
 set smartindent
 
 " Searching
@@ -40,14 +40,46 @@ set backspace=eol,start,indent
 set colorcolumn=100
 set wildmenu
 
+" Persistent undo
+" set undodir=~/.vim/undodir
+" set undofile "redo with ^r
+
 " Custom commands
 " remove trailing whitespace
 :command RMTRAILWS :%s/\s\+$//e
 inoremap jj <ESC>
 
-" Custom
-" make repy code syntax work
-au BufNewFile,BufRead,BufReadPost *.r2py set syntax=python
+au BufNewFile,BufRead *.py
+            \ set tabstop=4 |
+            \ set softtabstop=4 |
+            \ set shiftwidth=4 |
+            "\ set textwidth=79 |
+            \ set expandtab |
+            \ set autoindent |
+            \ set fileformat=unix
+
+" Enable ALE
+"let g:ale_linters = {
+"\   'python': ['flake8', 'pylint', 'mypy']
+"\}
+
+" Enable ALE linting on file save and text change
+"let g:ale_lint_on_save = 1
+"let g:ale_lint_on_text_changed = 'always'
+
+" Use black as a fixer
+"let g:ale_fixers = {
+"\ 'python': ['black'],
+"\}
+
+" Automatically fix files on save
+"let g:ale_fix_on_save = 0
+
+" Toggle ALE linting with <leader>l
+nnoremap <leader>l :ALEToggle<CR>
+
+" Show linting results in a list
+"let g:ale_set_loclist = 1
 
 call plug#begin()
 " The default plugin directory will be as follows:
@@ -63,5 +95,7 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'rust-lang/rust.vim'
+Plug 'davidhalter/jedi-vim'
+" Plug 'dense-analysis/ale'
 
 call plug#end()
